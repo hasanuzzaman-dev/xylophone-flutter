@@ -9,76 +9,38 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$soundNumber.wav');
   }
 
+  Expanded buildKey({Color color, int soundNumber, String btnText}){
+    return Expanded(
+      child: ElevatedButton(
+        onPressed: () {
+          playSound(soundNumber);
+        },
+        child: Text('$btnText'),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(color),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  playSound(1);
-                },
-                child: Text("Click Me"),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  playSound(2);
-                },
-                child: Text("Click Me"),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.brown),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  playSound(3);
-                },
-                child: Text("Click Me"),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.yellow),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  playSound(4);
-                },
-                child: Text("Click Me"),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.green),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  playSound(5);
-                },
-                child: Text("Click Me"),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.greenAccent),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  playSound(6);
-                },
-                child: Text("Click Me"),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  playSound(7);
-                },
-                child: Text("Click Me"),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.purple),
-                ),
-              ),
+              buildKey(color: Colors.red, soundNumber: 1, btnText: 'Button 1'),
+              buildKey(color: Colors.green, soundNumber: 2, btnText: 'Button 2'),
+              buildKey(color: Colors.grey, soundNumber: 3, btnText: 'Button 3'),
+              buildKey(color: Colors.purple, soundNumber: 4, btnText: 'Button 4'),
+              buildKey(color: Colors.pinkAccent, soundNumber: 5, btnText: 'Button 5'),
+              buildKey(color: Colors.blue, soundNumber: 6, btnText: 'Button 6'),
+              buildKey(color: Colors.blueGrey, soundNumber: 7, btnText: 'Button 7'),
+
+
             ],
           ),
         ),
